@@ -1,0 +1,132 @@
+<div class="container">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <br>
+  <div class="col-lg-4 col-md-4 col-sm-4" style="text-align:left">
+    <div class="dropdown" style="align-self: auto">
+      <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Cities
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <!--linking routes of different components-->
+        <a class="dropdown-item" href="#" [routerLink]="['/bangalore']">Bangalore</a>
+        <a class="dropdown-item" href="#" [routerLink]="['/home']">Mumbai</a>
+        <a class="dropdown-item disabled" href="#" [routerLink]="['/delhi']">Delhi</a>
+        <a class="dropdown-item" href="#" [routerLink]="['/chennai']">Chennai</a>
+        <a class="dropdown-item" href="#" [routerLink]="['/hyderabad']">Hyderabad</a>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 col-lg-12" style="text-align:center">
+    <h1>Banks in Delhi</h1>
+  </div>
+  <br>
+  <!--ng template is used to show bootstrap spinner till the cards are loaded-->
+  <ng-template #loading>
+    <div style="text-align: center">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </ng-template>
+
+  <div class="example-header" *ngIf="dataSource; else loading">
+    <mat-form-field>
+
+
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+
+    </mat-form-field>
+
+  </div>
+
+
+  <!--<button (click)="addItem()">Add Item</button>-->
+  <div class="example-container" style="justify-content: flex-start;">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+
+
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+
+      <!-- ifsc Column -->
+      <ng-container matColumnDef="favorite">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> FAV </th>
+        <td mat-cell *matCellDef="let element;">
+          <!--<button  (click)="activeSkill(element)" mat-icon-button>
+    <mat-icon aria-label="Heart">favorite</mat-icon>
+ </button>-->
+          <mat-checkbox (click)="activeSkill(element)" (change)="activeSkill(element) ? selection.toggle(row) : null"
+            [checked]="selection.isSelected(row)" [aria-label]="checkboxLabel(row)">
+          </mat-checkbox>
+
+        </td>
+      </ng-container>
+
+      <!-- ifsc Column -->
+      <ng-container matColumnDef="ifsc">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center"> IFSC </th>
+        <td mat-cell *matCellDef="let element"> {{element.ifsc}} </td>
+      </ng-container>
+
+      <!-- bankid Column -->
+      <ng-container matColumnDef="bank_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Bank Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.bank_id}} </td>
+      </ng-container>
+
+      <!-- branch Column -->
+      <ng-container matColumnDef="branch">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Branch </th>
+        <td mat-cell *matCellDef="let element"> {{element.branch}} </td>
+      </ng-container>
+
+      <!-- address Column -->
+      <!--<ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center">Address</th>
+    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+  </ng-container>-->
+
+      <!-- <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> Action </th>
+    <td mat-cell *matCellDef="let element">
+      <mat-icon (click)="editUser(element)">edit</mat-icon>
+    </td>
+  </ng-container>-->
+
+      <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center"> City </th>
+        <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="district">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center"> District </th>
+        <td mat-cell *matCellDef="let element"> {{element.district}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="state">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center"> State </th>
+        <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="bank_name" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header style="text-align: center"> Bank Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.bank_name}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+    </table>
+
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+
+</div>

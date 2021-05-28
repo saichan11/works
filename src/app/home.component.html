@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <br>
+
+
+        <div class="col-md-4">
+            <form>
+                <div class="form-group">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </div>
+                        <input type="text" class="form-control" name="searchString" placeholder="Type to search..." [(ngModel)]="searchString" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col">
+
+            <div class="table-responsive">
+
+                <table class="table  table-striped css-serial">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sl.No.</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Bank Name</th>
+                            <th scope="col">IFSC</th>
+                            <th scope="col">Branch</th>
+                            <th class="w-15" scope="col">Bank ID</th>
+                            <th scope="col">District</th>
+                            <th scope="col">State</th>
+                            <th class="w-15" scope="col">Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="align-self: center" *ngFor="let native of nativeBranch | filter : 'name' :
+searchString; let i = index">
+                            <td> </td>
+                            <td>{{native.city}}</td>
+                            <td>{{native.bank_name}}</td>
+                            <td>{{native.ifsc}}</td>
+                            <td>{{native.branch}}</td>
+                            <td>{{native.bank_id}}</td>
+                            <td>{{native.district}}</td>
+                            <td>{{native.state}}</td>
+                            <td>{{native.address}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

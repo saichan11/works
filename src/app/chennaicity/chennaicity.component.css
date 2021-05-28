@@ -1,0 +1,43 @@
+.container{
+    background:#acc7dc;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+
+}
+ 
+ 
+ /*applies blue color hovering effect to the sub categories drop down menu*/   
+  .dropdown .dropdown-menu a:hover{
+    /*background: #4286f4;*/
+    background: #87cefa;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    min-width: 300px;
+    
+  }
+  
+table {
+    width: 100%;
+}
+  
+  
+.mat-column-select {
+    overflow: visible;
+}
+  
+.tp-button-row button,
+.tp-button-row a {
+     margin-right: 8px;
+}
+  
+.mat-header-cell {    text-align: center;    }
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+  

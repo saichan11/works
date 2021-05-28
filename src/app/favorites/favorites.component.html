@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table  table-striped css-serial">
+      <thead>
+        <tr style="text-align: center">
+          <th scope="col">Sl.No.</th>
+          <th scope="col">City</th>
+          <th scope="col">Bank Name</th>
+          <th scope="col">IFSC</th>
+          <th scope="col">Branch</th>
+          <th class="w-15" scope="col">Bank ID</th>
+          <th scope="col">District</th>
+          <th scope="col">State</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="align-self: center;text-align: center" *ngFor="let single of myResponse">
+          <td> </td>
+          <td>{{single.city}}</td>
+          <td>{{single.bank_name}}</td>
+          <td>{{single.ifsc}}</td>
+          <td>{{single.branch}}</td>
+          <td>{{single.bank_id}}</td>
+          <td>{{single.district}}</td>
+          <td>{{single.state}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
